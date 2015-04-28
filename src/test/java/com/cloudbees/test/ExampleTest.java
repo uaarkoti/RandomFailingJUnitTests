@@ -3,6 +3,7 @@ import com.cloudbees.test.Repeat;
 import org.junit.runner.RunWith;
 import org.junit.Test;
 import static org.junit.Assert.fail;
+import static org.junit.Assume.assumeTrue;
 import java.util.Random;
 
 /**
@@ -14,9 +15,13 @@ public class ExampleTest {
   @Test
   @Repeat(10)
   public void sometimesFail() {
-    int rand = new Random().nextInt(5);
-    if (rand % 5 == 0) {
+    int randFail = new Random().nextInt(6);
+    int randSkip = new Random().nextInt(7);
+    if (randFail % 6 == 0) {
       fail();
+    }
+    else if(randSkip % 7 == 0) {
+      assumeTrue(false);
     }
   }
 }

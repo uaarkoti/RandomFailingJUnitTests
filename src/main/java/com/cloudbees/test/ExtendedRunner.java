@@ -6,6 +6,9 @@ import org.junit.runner.notification.RunNotifier;
 import org.junit.runners.BlockJUnit4ClassRunner;
 import org.junit.runners.model.*;
 
+import java.util.List;
+import java.util.Collections;
+
 /**
  * @author kreich
  * Based on http://codehowtos.blogspot.com/2011/04/run-junit-test-repeatedly.html
@@ -14,6 +17,15 @@ public class ExtendedRunner extends BlockJUnit4ClassRunner {
 
   public ExtendedRunner(Class<?> klass) throws InitializationError {
     super(klass);
+  }
+
+  /**
+   * Shuffle Test Methods
+   */
+  protected List<FrameworkMethod> computeTestMethods() {
+    List<FrameworkMethod> methods = super.computeTestMethods();
+    Collections.shuffle(methods);
+    return methods;
   }
 
   /**
