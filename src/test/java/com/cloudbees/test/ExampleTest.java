@@ -14,17 +14,8 @@ public class ExampleTest {
   @Test
   @Repeat(10)
   public void sometimesFail() {
-    int rand = new Random().nextInt(3);
-    if (rand % 3 == 0) {
-      fail();
-    }
-  }
-
-  @Test
-  @Repeat(10)
-  public void otherFailingTests() {
-    int rand = new Random().nextInt(3);
-    if (rand % 3 == 0) {
+    int rand = new Random().nextInt(5);
+    if (rand % 5 == 0) {
       fail();
     }
   }
